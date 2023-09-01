@@ -1,6 +1,7 @@
 # ToDoList
 
 This project was made with [Create React App](https://github.com/facebook/create-react-app).
+This project was made as a part of Udemy Web Development course.
 This app allows you to add and delete items from a To-Do List 
 
 ## Available Scripts
