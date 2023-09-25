@@ -7,6 +7,7 @@ function App() {
   const [items, setItems] = useState([]);
 
   function addItem(inputText) {
+    if (inputText.length !== 0)
     setItems(prevItems => {
       return [...prevItems, inputText];
     });
@@ -35,7 +36,7 @@ function App() {
               key={index}
               id={index}
               text={todoItem}
-              onChecked={deleteItem}
+              onDelete={deleteItem}
             />
           ))}
         </ul>

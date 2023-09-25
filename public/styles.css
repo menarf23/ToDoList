@@ -77,3 +77,8 @@ li {
   position: relative;
   padding: 0.5rem;
 }
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+}
