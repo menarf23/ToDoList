@@ -6,19 +6,28 @@ function App() {
   
   const [items, setItems] = useState([]);
 
-  function addItem(inputText) {
-    if (inputText.length !== 0)
+  function addItem(title) {
+    if (title.length !== 0)
     setItems(prevItems => {
-      return [...prevItems, inputText];
+      return [...prevItems, {id: crypto.randomUUID(), title, isDone: false}];
     });
   }
 
-  function deleteItem(id) {
+  function deleteItem(itemID) {
     setItems(prevItems => {
-      return prevItems.filter((item, index) => {
-        return index !== id;
-      });
+      return prevItems.filter(item => item.id !== itemID);
     });
+  }
+  
+  function toggleTodo(itemID) {
+    setItems(prevItems => {
+      return prevItems.map(item => {
+        if (item.id === itemID) {
+          item.isDone = !item.isDone
+        }
+        return item
+      })
+    })
   }
 
   return (
@@ -31,12 +40,14 @@ function App() {
       />
       <div>
         <ul>
-          {items.map((todoItem, index) => (
+          {items.map((todoItem) => (
             <ToDoItem
-              key={index}
-              id={index}
-              text={todoItem}
+              key={todoItem.id}
+              id={todoItem.id}
+              text={todoItem.title}
               onDelete={deleteItem}
+              handleClick={toggleTodo}
+              isDone={todoItem.isDone}
             />
           ))}
         </ul>
